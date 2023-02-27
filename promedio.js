@@ -35,7 +35,7 @@ let valor;
 let valor1;
 let valor2;
 
- let numeros = [10, 20, 30, 40];
+ let numeros = [10, 20, 50, 50, 50, 45 , 60, 40, 40];
 let total = numeros.reduce((a, b) => a + b, 0);
 
 console.log("Suma de todos los elementos de la lista:" + " " + total)
@@ -71,11 +71,11 @@ function media(arreglo){
     
 
 
-    if(valor==1){
+    if(valor===1){
 
-        valorMedia = Math.floor((arreglo.length/2) + 1);
+        valorMedia = arreglo[Math.floor((arreglo.length/2) )];
         
-
+        console.log(valorMedia)
         return valorMedia;
 
     }
@@ -93,7 +93,61 @@ function media(arreglo){
 
 }
 
-console.log("La media de la lista es: " + media(numeros));
+const ordenada = numeros.sort((a,b)=>a-b);
+
+console.log(ordenada);
+
+console.log( + deterPar_Ipar(ordenada));
+
+console.log("La media de la lista es: " + media(ordenada))
+
+function calcularModa(listaArray){
+
+    const listaObjeto = {};
+
+    for (let i = 0; i < listaArray.length; i++) {
+        const element = listaArray[i];
+
+        if(listaObjeto[element]){
+
+            listaObjeto[element] += 1;
+        }
+        else {
+
+            listaObjeto[element] = 1;
+        }
+        
+    }
+    
+    const objetoArreglado = Object.entries(listaObjeto);
+    return objetoArreglado;
+    
+}
+
+const arregloBidimencional = calcularModa(ordenada);
+
+
+console.log(calcularModa(ordenada));
+
+const arreglolisto = arregloBidimencional.sort((a,b)=> a[1] - b[1]);
+
+console.log(arreglolisto);
+
+const indiceModa = arreglolisto[arreglolisto.length-1];
+
+const moda = arreglolisto[indiceModa];
+console.log(indiceModa[0]);
+
+console.log(ordenada[5,0,1]);
+
+
+
+
+
+
+
+
+
 
 
 
